@@ -1,0 +1,34 @@
+{
+  "name": "notetakingapp",
+  "version": "1.0.0",
+  "description": "A Note Taking application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "grunt browserify",
+    "start": "grunt nodemon"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Débora Nobre",
+  "license": "ISC",
+  "presets": ["es2015"],
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.0.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-nodemon": "^0.3.0",
+    "grunt-react": "^0.9.0",
+    "node-jsx": "^0.11.0",
+    "nodemon": "^1.11.0",
+    "react": "^0.11.2",
+    "react-tools": "^0.11.2",
+    "reflux": "^0.1.13"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4"
+  }
+}
