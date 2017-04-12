@@ -150,13 +150,12 @@ var NoteStore = require('../../stores/NoteStore.js');
 var NoteCreationBox = React.createClass({displayName: 'NoteCreationBox',
 
     handleSave:function(noteText,id){
-
         if(id){
             NoteActions.editNote({_id:id,text:noteText});
         }
 
         else{
-            NoteActions.createNote({name:noteText.substring(0, 32), text: noteText});
+            NoteActions.createNote({name:note.text.length >= 20 ? note.text.substring(0,20) : note.text, text: noteText});
         }
     },
 
@@ -276,7 +275,6 @@ var TextArea = React.createClass({displayName: 'TextArea',
     },
 
     handleSave:function(){
-
        this.props.onSave(this.state.noteText,this.props.id);
 
        if(!this.props.id) {
@@ -21996,13 +21994,21 @@ var NoteStore = Reflux.createStore({
     },
 
     onEdit: function(note) {
-        for(var i=0;i<_notes.length;i++){
-            if(_notes[i]._id===note._id){
-                _notes[i].text=note.text;
-                this.trigger(_notes);
-                break;
-            }
-        }
+        request
+            .put('/notes/'+note._id)
+            .send(note)
+            .set('Accept', 'application/json')
+            .end((err, res) => {
+                if (!err) { 
+                    for(var i=0;i<_notes.length;i++){
+                        if(_notes[i]._id===note._id){
+                            _notes[i].text=note.text;
+                            this.trigger({notes: _notes});
+                            break;
+                        }
+                    }
+                }
+        });
     },
     
     getNotes:function(){

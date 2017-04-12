@@ -9,7 +9,7 @@ module.exports = function(app) {
     .post(note.create_a_note);
 
 
-  app.route('/notes/:noteId')
+  app.route('/notes/:_id')
     .get(note.read_a_note)
     .put(note.update_a_note)
     .delete(note.delete_a_note);

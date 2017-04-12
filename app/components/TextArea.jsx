@@ -16,7 +16,6 @@ var TextArea = React.createClass({
     },
 
     handleSave:function(){
-
        this.props.onSave(this.state.noteText,this.props.id);
 
        if(!this.props.id) {

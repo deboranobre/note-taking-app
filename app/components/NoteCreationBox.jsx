@@ -10,13 +10,12 @@ var NoteStore = require('../../stores/NoteStore.js');
 var NoteCreationBox = React.createClass({
 
     handleSave:function(noteText,id){
-
         if(id){
             NoteActions.editNote({_id:id,text:noteText});
         }
 
         else{
-            NoteActions.createNote({name:noteText.substring(0, 32), text: noteText});
+            NoteActions.createNote({name:note.text.length >= 20 ? note.text.substring(0,20) : note.text, text: noteText});
         }
     },
 
