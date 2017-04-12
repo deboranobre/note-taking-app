@@ -12,7 +12,7 @@ var NoteSchema = new Schema({
     type: Date,
     default: Date.now
   },  
-  description: {
+  text: {
     type: String,
     Required: 'Kindly enter some note'
   }

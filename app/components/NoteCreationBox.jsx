@@ -16,7 +16,7 @@ var NoteCreationBox = React.createClass({
         }
 
         else{
-            NoteActions.createNote({_id:Date.now(),text:noteText});
+            NoteActions.createNote({name:noteText.substring(0, 32), text: noteText});
         }
     },
 

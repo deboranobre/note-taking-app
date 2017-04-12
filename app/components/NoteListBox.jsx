@@ -3,23 +3,21 @@
  */
 
 var React = require('react');
+var Reflux = require('reflux');
 var NoteList = require('./NoteList.jsx');
-var NoteStore=require('../../stores/NoteStore');
+var NoteStore = require('../../stores/NoteStore');
 
 var NoteListBox = React.createClass({
+    mixins: [
+        Reflux.connect(NoteStore)
+    ],
 
     getInitialState:function(){
-      return {notes:NoteStore.getNotes()}
-    },
-
-    onChange: function(notes) {
-        this.setState({
-            notes: notes
-        });
+      return {notes:[]}
     },
 
     componentDidMount: function() {
-        this.unsubscribe = NoteStore.listen(this.onChange);
+        NoteStore.getNotes();
     },
 
     componentWillUnmount: function() {

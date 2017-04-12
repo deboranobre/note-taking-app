@@ -2,6 +2,7 @@
  * Created by Sandeep on 06/10/14.
  */
 var Reflux=require('reflux');
+var request=require('superagent');
 var NoteActions=require('../actions/NoteActions');
 
 var _notes=[];
@@ -11,11 +12,24 @@ var NoteStore = Reflux.createStore({
     init: function() {
         this.listenTo(NoteActions.createNote, this.onCreate);
         this.listenTo(NoteActions.editNote, this.onEdit);
+        this.listenTo(NoteActions.getNotes, this.onGetNotes);
+    },
+
+    getInitialState: function() {
+        return this.data;
     },
 
     onCreate: function(note) {
-        _notes.push(note);
-        this.trigger(_notes);
+        request
+            .post('/notes')
+            .send(note)
+            .set('Accept', 'application/json')
+            .end((err, res) => {
+                if (!err) { 
+                    _notes.push(note);
+                    this.trigger(_notes);
+                }
+        });
     },
 
     onEdit: function(note) {
@@ -27,9 +41,20 @@ var NoteStore = Reflux.createStore({
             }
         }
     },
-
+    
     getNotes:function(){
-        return _notes;
+        
+        request
+            .get('/notes')
+            .set('Content-Type', 'application/json')
+            .end((err, res) => {
+                if (err) {
+                    return new Error(err);
+                }
+
+                _notes = res.body;
+                this.trigger({notes: _notes});
+         });
     },
 
     getNote:function(id){

@@ -6,9 +6,9 @@ var mongoose = require('mongoose'),
 
 exports.list_all_notes = function(req, res) {
   Note.find({}, function(err, notes) {
-      console.log('entrou');
-    if (err)
+    if (err){
       res.send(err);
+    }
     res.json(notes);
   });
 };
@@ -19,8 +19,9 @@ exports.list_all_notes = function(req, res) {
 exports.create_a_note = function(req, res) {
   var new_note = new Note(req.body);
   new_note.save(function(err, note) {
-    if (err)
+    if (err){
       res.send(err);
+    }
     res.json(note);
   });
 };
