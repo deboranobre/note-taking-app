@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React=require('react');
 var NoteStore=require('../../stores/NoteStore');
 

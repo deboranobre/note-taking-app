@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('react');
 var TextArea=require('./TextArea.jsx');
 var NoteActions = require('../../actions/NoteActions.js');
