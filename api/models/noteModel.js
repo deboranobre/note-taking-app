@@ -4,17 +4,13 @@ var Schema = mongoose.Schema;
 
 
 var NoteSchema = new Schema({
-  name: {
+  text: {
     type: String,
-    Required: 'Kindly enter the name of the note'
+    required: true
   },
   Created_date: {
     type: Date,
     default: Date.now
-  },  
-  text: {
-    type: String,
-    Required: 'Kindly enter some note'
   }
 });
 

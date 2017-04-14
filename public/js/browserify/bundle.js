@@ -136,19 +136,7 @@ var NoteApp = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'row header' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'page-header' },
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            'React Note App'
-                        )
-                    )
-                ),
+                _react2.default.createElement('div', { className: 'row header' }),
                 _react2.default.createElement(
                     'div',
                     { className: 'row' },
@@ -214,7 +202,7 @@ var NoteCreationBox = function (_Component) {
             if (id) {
                 _NoteActions2.default.editNote({ _id: id, text: noteText });
             } else {
-                _NoteActions2.default.createNote({ name: note.text.length >= 20 ? note.text.substring(0, 20) : note.text, text: noteText });
+                _NoteActions2.default.createNote({ name: noteText.length >= 20 ? noteText.substring(0, 20) : noteText, text: noteText });
             }
         }
     }, {
@@ -366,11 +354,16 @@ var NoteListBox = _react2.default.createClass({
             { className: 'col-md-4' },
             _react2.default.createElement(
                 'div',
-                { className: 'centered' },
+                { className: 'row' },
                 _react2.default.createElement(
-                    'a',
-                    { href: '', onClick: this.onAdd },
-                    'Add New'
+                    'div',
+                    { className: 'col-md-10' },
+                    _react2.default.createElement('input', { className: 'form-control', type: 'text', placeholder: 'All notes' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-2' },
+                    _react2.default.createElement('a', { className: 'add-button', href: '', onClick: this.onAdd, alt: 'Add New' })
                 )
             ),
             _react2.default.createElement(_NoteList2.default, { ref: 'noteList', notes: this.state.notes, onEdit: this.props.onEdit })
@@ -429,7 +422,7 @@ var TextArea = function (_Component) {
             this.props.onSave(this.state.noteText, this.props.id);
 
             if (!this.props.id) {
-                this.refs.textArea.getDOMNode().value = '';
+                this.refs.textArea.value = '';
                 this.setState({ noteText: '' });
             }
         }
@@ -442,7 +435,8 @@ var TextArea = function (_Component) {
             });
 
             if (!nextProps.id) {
-                this.refs.textArea.getDOMNode().focus();
+                console.log('entrou');
+                this.refs.textArea.focus();
             }
         }
     }, {
@@ -23818,7 +23812,7 @@ var NoteStore = Reflux.createStore({
 
         request.post('/notes').send(note).set('Accept', 'application/json').end(function (err, res) {
             if (!err) {
-                _notes.push(note);
+                _notes.push(res.body);
                 _this.trigger(_notes);
             }
         });

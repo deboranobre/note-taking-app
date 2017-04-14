@@ -23,7 +23,7 @@ var NoteStore = Reflux.createStore({
             .set('Accept', 'application/json')
             .end((err, res) => {
                 if (!err) { 
-                    _notes.push(note);
+                    _notes.push(res.body);
                     this.trigger(_notes);
                 }
         });

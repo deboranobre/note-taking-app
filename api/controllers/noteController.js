@@ -2,7 +2,7 @@
 
 
 var mongoose = require('mongoose'),
-  Note = mongoose.model('Notes');
+    Note = mongoose.model('Notes');
 
 exports.list_all_notes = function(req, res) {
   Note.find({}, function(err, notes) {
@@ -28,7 +28,7 @@ exports.create_a_note = function(req, res) {
 
 
 exports.read_a_note = function(req, res) {
-  Note.findById(req.params.noteId, function(err, note) {
+  Note.findById(req.params._id, function(err, note) {
     if (err)
       res.send(err);
     res.json(note);
@@ -41,7 +41,6 @@ exports.update_a_note = function(req, res) {
     if (err){
       res.send(err);
     }
-    console.log(note);
     res.json(note);
   });
 };
@@ -51,7 +50,7 @@ exports.delete_a_note = function(req, res) {
 
 
   Note.remove({
-    _id: req.params.noteId
+    _id: req.params._id
   }, function(err, note) {
     if (err)
       res.send(err);

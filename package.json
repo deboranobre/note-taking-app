@@ -4,7 +4,7 @@
   "description": "A Note Taking application.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "prestart": "grunt browserify",
     "start": "grunt nodemon"
   },
@@ -31,13 +31,14 @@
     "grunt-nodemon": "^0.3.0",
     "grunt-react": "^0.9.0",
     "grunt-reactify": "0.0.2",
-    "grunt-webpack": "^2.0.1",
     "node-jsx": "^0.11.0",
     "nodemon": "^1.11.0",
     "react": "^0.11.2",
     "react-tools": "^0.11.2",
     "reflux": "^0.1.13",
-    "webpack": "^2.3.3"
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
     "express": "^4.15.2",

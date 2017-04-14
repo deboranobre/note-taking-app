@@ -26,9 +26,7 @@ class NoteApp extends Component {
         return (
             <div className="container">
                 <div className="row header">
-                    <div className="page-header">
-                        <h1>React Note App</h1>
-                    </div>
+                    
                 </div>
                 <div className="row">
                     <NoteListBox onEdit={this.onEdit} onAdd={this.onAdd}/>

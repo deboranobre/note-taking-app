@@ -17,12 +17,12 @@ class TextArea extends Component {
     }
 
     handleSave(){
-       this.props.onSave(this.state.noteText,this.props.id);
+        this.props.onSave(this.state.noteText,this.props.id);
 
-       if(!this.props.id) {
-           this.refs.textArea.getDOMNode().value = '';
-           this.setState({noteText: ''});
-       }
+        if(!this.props.id) {
+            this.refs.textArea.value = '';
+            this.setState({noteText: ''});
+        }
 
     }
 
@@ -33,7 +33,8 @@ class TextArea extends Component {
         });
 
         if(!nextProps.id){
-            this.refs.textArea.getDOMNode().focus();
+            console.log('entrou');
+           this.refs.textArea.focus();
         }
     }
 

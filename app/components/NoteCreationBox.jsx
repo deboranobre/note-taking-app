@@ -9,9 +9,8 @@ class NoteCreationBox extends Component {
         if(id){
             NoteActions.editNote({_id:id,text:noteText});
         }
-
         else{
-            NoteActions.createNote({name:note.text.length >= 20 ? note.text.substring(0,20) : note.text, text: noteText});
+            NoteActions.createNote({name:noteText.length >= 20 ? noteText.substring(0,20) : noteText, text: noteText});
         }
     }
 
