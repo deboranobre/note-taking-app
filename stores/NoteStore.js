@@ -1,6 +1,3 @@
-/**
- * Created by Sandeep on 06/10/14.
- */
 var Reflux=require('reflux');
 var request=require('superagent');
 var NoteActions=require('../actions/NoteActions');

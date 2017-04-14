@@ -1,19 +1,24 @@
-var React = require('react');
-var Note = require('./Note.jsx');
+import React, {Component, PropTypes} from 'react';
+import Note from './Note.jsx';
 
-var NoteList = React.createClass({
+class NoteList extends Component {
 
-    getInitialState:function(){
-        return {activeNoteId:null}
-    },
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeNoteId:null
+        };
 
-    setActiveNote: function(id) {
+        this.setActiveNote = this.setActiveNote.bind(this);
+    }
+
+    setActiveNote(id) {
         this.setState({activeNoteId: id});
-    },
+    }
 
-    render: function() {
+    render() {
         var self=this,
-            notes=this.props.notes;
+            notes=this.props.notes.concat().reverse();
 
         var noteNodes = notes.map(function (note) {
             return (
@@ -26,6 +31,6 @@ var NoteList = React.createClass({
             </div>
          )
     }
-});
+};
 
-module.exports=NoteList;
+export default NoteList

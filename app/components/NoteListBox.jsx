@@ -1,7 +1,7 @@
-var React = require('react');
-var Reflux = require('reflux');
-var NoteList = require('./NoteList.jsx');
-var NoteStore = require('../../stores/NoteStore');
+import React from 'react';
+import Reflux from 'reflux';
+import NoteList from './NoteList.jsx';
+import NoteStore from '../../stores/NoteStore';
 
 var NoteListBox = React.createClass({
     mixins: [
@@ -36,4 +36,4 @@ var NoteListBox = React.createClass({
     }
 });
 
-module.exports=NoteListBox;
+export default NoteListBox

@@ -1,4 +1,4 @@
-var React = require('react');
+import React, {Component, PropTypes} from 'react';
 
 var Note = React.createClass({
 
@@ -21,4 +21,4 @@ var Note = React.createClass({
     }
 });
 
-module.exports=Note;
+export default Note

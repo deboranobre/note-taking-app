@@ -1,10 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-/**
- * Created by Sandeep on 06/10/14.
- */
-
 var Reflux = require('reflux');
 
 var NoteActions = Reflux.createActions(["createNote", "editNote", "getNotes"]);
@@ -41,9 +37,17 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 },{"./components/NoteApp.jsx":4,"react":187,"react-dom":36}],3:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var Note = React.createClass({
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Note = _react2.default.createClass({
     displayName: 'Note',
 
 
@@ -60,7 +64,7 @@ var Note = React.createClass({
 
         var className = this.props.active ? 'active' : null;
 
-        return React.createElement(
+        return _react2.default.createElement(
             'a',
             { href: '#', className: 'list-group-item ' + className, onClick: this.handleEdit.bind(null, note._id) },
             title
@@ -68,152 +72,282 @@ var Note = React.createClass({
     }
 });
 
-module.exports = Note;
+exports.default = Note;
 
 },{"react":187}],4:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var NoteListBox = require('./NoteListBox.jsx');
-var NoteCreationBox = require('./NoteCreationBox.jsx');
-
-var NoteApp = React.createClass({
-    displayName: 'NoteApp',
-
-
-    getInitialState: function getInitialState() {
-        return { id: null };
-    },
-
-    onEdit: function onEdit(id) {
-        this.setState({ currentlyEdited: id });
-    },
-
-    onAdd: function onAdd() {
-        this.setState({ currentlyEdited: null });
-    },
-
-    render: function render() {
-        return React.createElement(
-            'div',
-            { className: 'container' },
-            React.createElement(
-                'div',
-                { className: 'row header' },
-                React.createElement(
-                    'div',
-                    { className: 'page-header' },
-                    React.createElement(
-                        'h1',
-                        null,
-                        'React Note App'
-                    )
-                )
-            ),
-            React.createElement(
-                'div',
-                { className: 'row' },
-                React.createElement(NoteListBox, { onEdit: this.onEdit, onAdd: this.onAdd }),
-                React.createElement(NoteCreationBox, { id: this.state.currentlyEdited })
-            )
-        );
-    }
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = NoteApp;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _NoteListBox = require('./NoteListBox.jsx');
+
+var _NoteListBox2 = _interopRequireDefault(_NoteListBox);
+
+var _NoteCreationBox = require('./NoteCreationBox.jsx');
+
+var _NoteCreationBox2 = _interopRequireDefault(_NoteCreationBox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NoteApp = function (_Component) {
+    _inherits(NoteApp, _Component);
+
+    function NoteApp(props) {
+        _classCallCheck(this, NoteApp);
+
+        var _this = _possibleConstructorReturn(this, (NoteApp.__proto__ || Object.getPrototypeOf(NoteApp)).call(this, props));
+
+        _this.state = {
+            id: null
+        };
+
+        _this.onEdit = _this.onEdit.bind(_this);
+        _this.onAdd = _this.onAdd.bind(_this);
+        return _this;
+    }
+
+    _createClass(NoteApp, [{
+        key: 'onEdit',
+        value: function onEdit(id) {
+            this.setState({ currentlyEdited: id });
+        }
+    }, {
+        key: 'onAdd',
+        value: function onAdd() {
+            this.setState({ currentlyEdited: null });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row header' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'page-header' },
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'React Note App'
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(_NoteListBox2.default, { onEdit: this.onEdit, onAdd: this.onAdd }),
+                    _react2.default.createElement(_NoteCreationBox2.default, { id: this.state.currentlyEdited })
+                )
+            );
+        }
+    }]);
+
+    return NoteApp;
+}(_react.Component);
+
+;
+
+exports.default = NoteApp;
 
 },{"./NoteCreationBox.jsx":5,"./NoteListBox.jsx":7,"react":187}],5:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var TextArea = require('./TextArea.jsx');
-var NoteActions = require('../../actions/NoteActions.js');
-var NoteStore = require('../../stores/NoteStore.js');
-
-var NoteCreationBox = React.createClass({
-    displayName: 'NoteCreationBox',
-
-
-    handleSave: function handleSave(noteText, id) {
-        if (id) {
-            NoteActions.editNote({ _id: id, text: noteText });
-        } else {
-            NoteActions.createNote({ name: note.text.length >= 20 ? note.text.substring(0, 20) : note.text, text: noteText });
-        }
-    },
-
-    render: function render() {
-
-        var note;
-
-        if (this.props.id) {
-            note = NoteStore.getNote(this.props.id);
-        }
-
-        return React.createElement(
-            'div',
-            { className: 'col-md-8' },
-            React.createElement(TextArea, { onSave: this.handleSave, id: this.props.id, noteText: note ? note.text : '' })
-        );
-    }
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = NoteCreationBox;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TextArea = require('./TextArea.jsx');
+
+var _TextArea2 = _interopRequireDefault(_TextArea);
+
+var _NoteActions = require('../../actions/NoteActions.js');
+
+var _NoteActions2 = _interopRequireDefault(_NoteActions);
+
+var _NoteStore = require('../../stores/NoteStore.js');
+
+var _NoteStore2 = _interopRequireDefault(_NoteStore);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NoteCreationBox = function (_Component) {
+    _inherits(NoteCreationBox, _Component);
+
+    function NoteCreationBox() {
+        _classCallCheck(this, NoteCreationBox);
+
+        return _possibleConstructorReturn(this, (NoteCreationBox.__proto__ || Object.getPrototypeOf(NoteCreationBox)).apply(this, arguments));
+    }
+
+    _createClass(NoteCreationBox, [{
+        key: 'handleSave',
+        value: function handleSave(noteText, id) {
+            if (id) {
+                _NoteActions2.default.editNote({ _id: id, text: noteText });
+            } else {
+                _NoteActions2.default.createNote({ name: note.text.length >= 20 ? note.text.substring(0, 20) : note.text, text: noteText });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            var note;
+
+            if (this.props.id) {
+                note = _NoteStore2.default.getNote(this.props.id);
+            }
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'col-md-8' },
+                _react2.default.createElement(_TextArea2.default, { onSave: this.handleSave, id: this.props.id, noteText: note ? note.text : '' })
+            );
+        }
+    }]);
+
+    return NoteCreationBox;
+}(_react.Component);
+
+;
+
+exports.default = NoteCreationBox;
 
 },{"../../actions/NoteActions.js":1,"../../stores/NoteStore.js":207,"./TextArea.jsx":8,"react":187}],6:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var Note = require('./Note.jsx');
-
-var NoteList = React.createClass({
-    displayName: 'NoteList',
-
-
-    getInitialState: function getInitialState() {
-        return { activeNoteId: null };
-    },
-
-    setActiveNote: function setActiveNote(id) {
-        this.setState({ activeNoteId: id });
-    },
-
-    render: function render() {
-        var self = this,
-            notes = this.props.notes;
-
-        var noteNodes = notes.map(function (note) {
-            return React.createElement(Note, { key: note._id, active: self.state.activeNoteId === note._id, note: note, onEdit: self.props.onEdit, onSelect: self.setActiveNote });
-        });
-        return React.createElement(
-            'div',
-            { className: 'list-group' },
-            noteNodes
-        );
-    }
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = NoteList;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Note = require('./Note.jsx');
+
+var _Note2 = _interopRequireDefault(_Note);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NoteList = function (_Component) {
+    _inherits(NoteList, _Component);
+
+    function NoteList(props) {
+        _classCallCheck(this, NoteList);
+
+        var _this = _possibleConstructorReturn(this, (NoteList.__proto__ || Object.getPrototypeOf(NoteList)).call(this, props));
+
+        _this.state = {
+            activeNoteId: null
+        };
+
+        _this.setActiveNote = _this.setActiveNote.bind(_this);
+        return _this;
+    }
+
+    _createClass(NoteList, [{
+        key: 'setActiveNote',
+        value: function setActiveNote(id) {
+            this.setState({ activeNoteId: id });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var self = this,
+                notes = this.props.notes.concat().reverse();
+
+            var noteNodes = notes.map(function (note) {
+                return _react2.default.createElement(_Note2.default, { key: note._id, active: self.state.activeNoteId === note._id, note: note, onEdit: self.props.onEdit, onSelect: self.setActiveNote });
+            });
+            return _react2.default.createElement(
+                'div',
+                { className: 'list-group' },
+                noteNodes
+            );
+        }
+    }]);
+
+    return NoteList;
+}(_react.Component);
+
+;
+
+exports.default = NoteList;
 
 },{"./Note.jsx":3,"react":187}],7:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var Reflux = require('reflux');
-var NoteList = require('./NoteList.jsx');
-var NoteStore = require('../../stores/NoteStore');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var NoteListBox = React.createClass({
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reflux = require('reflux');
+
+var _reflux2 = _interopRequireDefault(_reflux);
+
+var _NoteList = require('./NoteList.jsx');
+
+var _NoteList2 = _interopRequireDefault(_NoteList);
+
+var _NoteStore = require('../../stores/NoteStore');
+
+var _NoteStore2 = _interopRequireDefault(_NoteStore);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NoteListBox = _react2.default.createClass({
     displayName: 'NoteListBox',
 
-    mixins: [Reflux.connect(NoteStore)],
+    mixins: [_reflux2.default.connect(_NoteStore2.default)],
 
     getInitialState: function getInitialState() {
         return { notes: [] };
     },
 
     componentDidMount: function componentDidMount() {
-        NoteStore.getNotes();
+        _NoteStore2.default.getNotes();
     },
 
     componentWillUnmount: function componentWillUnmount() {
@@ -227,77 +361,111 @@ var NoteListBox = React.createClass({
     },
 
     render: function render() {
-        return React.createElement(
+        return _react2.default.createElement(
             'div',
             { className: 'col-md-4' },
-            React.createElement(
+            _react2.default.createElement(
                 'div',
                 { className: 'centered' },
-                React.createElement(
+                _react2.default.createElement(
                     'a',
                     { href: '', onClick: this.onAdd },
                     'Add New'
                 )
             ),
-            React.createElement(NoteList, { ref: 'noteList', notes: this.state.notes, onEdit: this.props.onEdit })
+            _react2.default.createElement(_NoteList2.default, { ref: 'noteList', notes: this.state.notes, onEdit: this.props.onEdit })
         );
     }
 });
 
-module.exports = NoteListBox;
+exports.default = NoteListBox;
 
 },{"../../stores/NoteStore":207,"./NoteList.jsx":6,"react":187,"reflux":195}],8:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var NoteStore = require('../../stores/NoteStore');
-
-var TextArea = React.createClass({
-    displayName: 'TextArea',
-
-
-    getInitialState: function getInitialState() {
-        return { noteText: '' };
-    },
-
-    handleChange: function handleChange(event) {
-        this.setState({ noteText: event.target.value });
-    },
-
-    handleSave: function handleSave() {
-        this.props.onSave(this.state.noteText, this.props.id);
-
-        if (!this.props.id) {
-            this.refs.textArea.getDOMNode().value = '';
-            this.setState({ noteText: '' });
-        }
-    },
-
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-
-        this.setState({
-            noteText: nextProps.noteText
-        });
-
-        if (!nextProps.id) {
-            this.refs.textArea.getDOMNode().focus();
-        }
-    },
-
-    render: function render() {
-        return React.createElement(
-            'div',
-            null,
-            React.createElement('textarea', { className: 'form-control', ref: 'textArea', cols: '100', rows: '20', value: this.state.noteText, onChange: this.handleChange }),
-            React.createElement('br', null),
-            React.createElement('input', { type: 'button', className: 'btn btn-success btn-lg', value: 'Save', onClick: this.handleSave })
-        );
-    }
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = TextArea;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-},{"../../stores/NoteStore":207,"react":187}],9:[function(require,module,exports){
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TextArea = function (_Component) {
+    _inherits(TextArea, _Component);
+
+    function TextArea(props) {
+        _classCallCheck(this, TextArea);
+
+        var _this = _possibleConstructorReturn(this, (TextArea.__proto__ || Object.getPrototypeOf(TextArea)).call(this, props));
+
+        _this.state = {
+            noteText: ''
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleSave = _this.handleSave.bind(_this);
+        return _this;
+    }
+
+    _createClass(TextArea, [{
+        key: 'handleChange',
+        value: function handleChange(event) {
+            this.setState({ noteText: event.target.value });
+        }
+    }, {
+        key: 'handleSave',
+        value: function handleSave() {
+            this.props.onSave(this.state.noteText, this.props.id);
+
+            if (!this.props.id) {
+                this.refs.textArea.getDOMNode().value = '';
+                this.setState({ noteText: '' });
+            }
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+
+            this.setState({
+                noteText: nextProps.noteText
+            });
+
+            if (!nextProps.id) {
+                this.refs.textArea.getDOMNode().focus();
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('textarea', { className: 'form-control', ref: 'textArea', cols: '100', rows: '20', value: this.state.noteText, onChange: this.handleChange }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { type: 'button', className: 'btn btn-success btn-lg', value: 'Save', onClick: this.handleSave })
+            );
+        }
+    }]);
+
+    return TextArea;
+}(_react.Component);
+
+;
+
+exports.default = TextArea;
+
+},{"react":187}],9:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -23627,9 +23795,6 @@ exports.cleanHeader = function(header, shouldStripCookie){
 },{}],207:[function(require,module,exports){
 'use strict';
 
-/**
- * Created by Sandeep on 06/10/14.
- */
 var Reflux = require('reflux');
 var request = require('superagent');
 var NoteActions = require('../actions/NoteActions');

@@ -1,11 +1,11 @@
-var React = require('react');
-var TextArea=require('./TextArea.jsx');
-var NoteActions = require('../../actions/NoteActions.js');
-var NoteStore = require('../../stores/NoteStore.js');
+import React, {Component, PropTypes} from 'react';
+import TextArea from './TextArea.jsx';
+import NoteActions from '../../actions/NoteActions.js';
+import NoteStore from '../../stores/NoteStore.js';
 
-var NoteCreationBox = React.createClass({
+class NoteCreationBox extends Component {
 
-    handleSave:function(noteText,id){
+    handleSave(noteText,id){
         if(id){
             NoteActions.editNote({_id:id,text:noteText});
         }
@@ -13,9 +13,9 @@ var NoteCreationBox = React.createClass({
         else{
             NoteActions.createNote({name:note.text.length >= 20 ? note.text.substring(0,20) : note.text, text: noteText});
         }
-    },
+    }
 
-    render: function() {
+    render() {
 
         var note;
 
@@ -29,6 +29,6 @@ var NoteCreationBox = React.createClass({
             </div>
         )
     }
-});
+};
 
-module.exports=NoteCreationBox;
+export default NoteCreationBox

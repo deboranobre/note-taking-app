@@ -1,17 +1,22 @@
-var React=require('react');
-var NoteStore=require('../../stores/NoteStore');
+import React, {Component, PropTypes} from 'react';
 
-var TextArea = React.createClass({
+class TextArea extends Component {
 
-    getInitialState:function(){
-        return {noteText:''}
-    },
+    constructor(props) {
+        super(props);
+        this.state = {
+            noteText:'' 
+        };
 
-    handleChange: function(event) {
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+    }
+
+    handleChange(event) {
         this.setState({noteText: event.target.value});
-    },
+    }
 
-    handleSave:function(){
+    handleSave(){
        this.props.onSave(this.state.noteText,this.props.id);
 
        if(!this.props.id) {
@@ -19,9 +24,9 @@ var TextArea = React.createClass({
            this.setState({noteText: ''});
        }
 
-    },
+    }
 
-    componentWillReceiveProps: function(nextProps) {
+    componentWillReceiveProps(nextProps) {
 
         this.setState({
             noteText: nextProps.noteText
@@ -30,9 +35,9 @@ var TextArea = React.createClass({
         if(!nextProps.id){
             this.refs.textArea.getDOMNode().focus();
         }
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <div>
                 <textarea className="form-control" ref="textArea" cols="100" rows="20" value={this.state.noteText} onChange={this.handleChange}></textarea><br/>
@@ -40,6 +45,6 @@ var TextArea = React.createClass({
             </div>
         )
     }
-});
+};
 
-module.exports=TextArea;
+export default TextArea
