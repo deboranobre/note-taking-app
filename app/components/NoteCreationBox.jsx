@@ -1,9 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import TextArea from './TextArea.jsx';
+import Actions from './Actions.jsx';
 import NoteActions from '../../actions/NoteActions.js';
 import NoteStore from '../../stores/NoteStore.js';
+import styled from 'styled-components';
 
 class NoteCreationBox extends Component {
+    
+    handleDelete(id){
+        NoteActions.deleteNote(id);
+    }
 
     handleSave(noteText,id){
         if(id){
@@ -23,8 +29,11 @@ class NoteCreationBox extends Component {
         }
 
         return (
-            <div className="col-md-8">
-                <TextArea onSave={this.handleSave} id={this.props.id} noteText={note ? note.text : ''} />
+            <div className="col-md-8 hidden-xs hidden-sm">
+                <Actions id={this.props.id} onDelete={this.handleDelete}/>
+                <div className="row">
+                    <TextArea onSave={this.handleSave} id={this.props.id} noteText={note ? note.text : ''} />
+                </div>
             </div>
         )
     }

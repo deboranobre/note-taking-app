@@ -33,7 +33,6 @@ class TextArea extends Component {
         });
 
         if(!nextProps.id){
-            console.log('entrou');
            this.refs.textArea.focus();
         }
     }

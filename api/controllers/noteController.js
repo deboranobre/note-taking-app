@@ -13,9 +13,6 @@ exports.list_all_notes = function(req, res) {
   });
 };
 
-
-
-
 exports.create_a_note = function(req, res) {
   var new_note = new Note(req.body);
   new_note.save(function(err, note) {
@@ -47,8 +44,6 @@ exports.update_a_note = function(req, res) {
 
 
 exports.delete_a_note = function(req, res) {
-
-
   Note.remove({
     _id: req.params._id
   }, function(err, note) {

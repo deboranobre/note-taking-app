@@ -9,6 +9,7 @@ var NoteStore = Reflux.createStore({
     init: function() {
         this.listenTo(NoteActions.createNote, this.onCreate);
         this.listenTo(NoteActions.editNote, this.onEdit);
+        this.listenTo(NoteActions.deleteNote, this.onDelete);
         this.listenTo(NoteActions.getNotes, this.onGetNotes);
     },
 
@@ -45,6 +46,19 @@ var NoteStore = Reflux.createStore({
                     }
                 }
         });
+    },
+
+    onDelete: function(_id) {
+        request
+            .delete('/notes/'+_id)
+            .end((err, res) => {
+                if (!err) {
+                    _notes = _notes.filter(note => (note._id !== _id));
+                    this.trigger({
+                        notes: _notes
+                    });
+                }
+            });
     },
     
     getNotes:function(){
