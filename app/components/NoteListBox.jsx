@@ -48,7 +48,7 @@ var NoteListBox = React.createClass({
     render: function() {
         return (
             <div className="col-xs-12 col-sm-12 col-md-4">
-                <div className="row">
+                <div className="row" style={{height: 40}}>
                     <div className="col-xs-10">    
                         <input className="form-control" type="text" placeholder="All notes" onChange={this.handleSearch}/>
                     </div>

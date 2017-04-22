@@ -6,9 +6,16 @@ import NoteStore from '../../stores/NoteStore.js';
 import styled from 'styled-components';
 
 class NoteCreationBox extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.handleDelete = this.handleDelete.bind(this);
+    }
     
     handleDelete(id){
         NoteActions.deleteNote(id);
+        this.refs.textArea.refs.textArea.value = '';
     }
 
     handleSave(noteText,id){
@@ -32,7 +39,7 @@ class NoteCreationBox extends Component {
             <div className="col-md-8 hidden-xs hidden-sm">
                 <Actions id={this.props.id} onDelete={this.handleDelete}/>
                 <div className="row">
-                    <TextArea onSave={this.handleSave} id={this.props.id} noteText={note ? note.text : ''} />
+                    <TextArea ref="textArea" onSave={this.handleSave} id={this.props.id} noteText={note ? note.text : ''} />
                 </div>
             </div>
         )

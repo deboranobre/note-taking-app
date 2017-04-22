@@ -18,7 +18,7 @@ class Actions extends Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row" style={{height: 40, textAlign:'right'}}>
                 <a href="" onClick={this.handleDelete} alt="Delete"><i className="fa fa-trash fa-2x" aria-hidden="true"></i></a>
             </div>
         )

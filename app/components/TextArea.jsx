@@ -14,6 +14,10 @@ class TextArea extends Component {
 
     handleChange(event) {
         this.setState({noteText: event.target.value});
+        
+        if(this.props.id) {
+            this.props.onSave(this.state.noteText,this.props.id);
+        }
     }
 
     handleSave(){
@@ -27,16 +31,13 @@ class TextArea extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-
-        this.setState({
-            noteText: nextProps.noteText
-        });
-
-        if(!nextProps.id){
-           this.refs.textArea.focus();
-        }
+        this.setState({noteText: nextProps.noteText});
     }
 
+    componentDidUpdate(){
+        this.refs.textArea.focus();
+    }
+    
     render() {
         return (
             <div>

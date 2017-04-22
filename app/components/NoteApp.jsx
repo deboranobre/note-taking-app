@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import NoteListBox from './NoteListBox.jsx';
 import NoteCreationBox from './NoteCreationBox.jsx';
 
