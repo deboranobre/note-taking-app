@@ -1,0 +1,6 @@
+{
+    "GCLOUD_PROJECT": "note-taking-app-165514",
+    "DATA_BACKEND": "mongodb",
+    "MONGO_URL": "mongodb://admin:noteapp123@ds113841.mlab.com:13841/notetakingdb",
+    "MONGO_COLLECTION": "notes"
+}
