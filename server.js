@@ -11,7 +11,7 @@ var express = require('express'),
   var React=require('react');
   
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://admin:noteapp123@ds113841.mlab.com:13841/notetakingdb'); 
+mongoose.connect('heroku config:set MONGOLAB_URI=mongodb://admin:noteapp123@ds113841.mlab.com:13841/notetakingdb'); 
 
 var db = mongoose.connection;
 
@@ -32,7 +32,10 @@ var routes = require('./api/routes/noteRoutes');
 routes(app);
 
 if(!module.parent) {
-  app.listen(port);
+  //app.listen(port);
+  app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
 }
 
 console.log('todo list RESTful API server started on: ' + port);
