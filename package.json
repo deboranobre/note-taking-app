@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "mocha --timeout 10000",
-    "prestart": "grunt browserify",
-    "start": "grunt nodemon"
+    "start": "node server.js"
   },
   "engines": {
     "node": ">= 0.10.0"
