@@ -3,7 +3,6 @@ import TextArea from './TextArea.jsx';
 import Actions from './Actions.jsx';
 import NoteActions from '../../actions/NoteActions.js';
 import NoteStore from '../../stores/NoteStore.js';
-import styled from 'styled-components';
 
 class NoteCreationBox extends Component {
 
