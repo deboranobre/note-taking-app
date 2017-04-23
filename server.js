@@ -11,7 +11,7 @@ var express = require('express'),
   var React=require('react');
   
 mongoose.Promise = global.Promise;
-mongoose.connect('heroku config:set MONGOLAB_URI=mongodb://admin:noteapp123@ds113841.mlab.com:13841/notetakingdb'); 
+mongoose.connect('mongodb://localhost/NoteTakingdb'); 
 
 var db = mongoose.connection;
 
